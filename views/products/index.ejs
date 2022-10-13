@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bgStyle.css">
+    <!-- we also need jQuery for the bootsrapt js script to work -->
+    <script src="/js/jquery-3.6.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" defer></script>
+</head>
+
+<body>
+        <div class="container my-3 p-0">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title p-2">Here is our Grocery Shop. Click on a product for more details &#128513;</h2>
+                    <h2 class="card-subtitle p-2"><%= category %>  products</h2>
+                    <ul class="list-group">
+                        <% for (let product of products) {%> 
+                            <li class="list-group-item"><a href="/products/<%= product._id %>" class="nav-link"> <%= product.name %> </a> </li>
+                        <% } %> 
+                    </ul>
+                    <a href="/products/new"><button type="button" class="btn btn-outline-info p-2 my-2">Add a product</button></a>
+                    <% if (category !== 'All') { %>  
+                        <a href="/products"><button type="button" class="btn btn-outline-primary p-2 my-2">All categories of products</button></a>
+                    <% } %> 
+                </div>
+            </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product edit</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bgStyle.css">
+    <!-- we also need jQuery for the bootsrapt js script to work -->
+    <script src="/js/jquery-3.6.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" defer></script>
+</head>
+
+<body>
+    <div class="container my-3 p-0">    
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title p-2">Edit product</h2>
+                <form action="/products/<%= product._id %>?_method=PUT" method="POST">
+                    <div class="mb-3">
+                        <label for="name" class="form-lable">Product name</label>
+                        <input type="text" name="name" id="name" class="form-control" value="<%= product.name %>" placeholder="Product name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-lable">Poduct price</label>
+                        <input type="number" name="price" id="price" class="form-control" value="<%= product.price %>" placeholder="Price">
+                    </div>    
+                    <div class="mb-3">
+                        <label for="category" class="form-lable">Select category</label>
+                        <select name="category" id="category" class="form-select">
+                            <% for (let category of categories) { %>
+                                <option value="<%= category %>" <%= product.category === category ? 'selected' : ''%>><%= category %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-success m-2">Add product</button>
+                        <a href="/products/<%= product._id %>"><button type="button" class="btn btn-outline-info m-2">Product page</button></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
