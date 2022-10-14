@@ -1,8 +1,8 @@
-#  <h2 styel="color:blue">Grochery Shop App</h2>
+#  Grochery Shop App
 
 ## Introduction
 
-> A simple shop app where I implemented: full CRUD with the help of MongoDB, Express and Node.js.
+> A simple shop app where I implemented full CRUD with the help of MongoDB, Express and Node.js.
 
 ## :memo: Installation
 
