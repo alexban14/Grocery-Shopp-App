@@ -49,7 +49,7 @@ app.get('/products', async (req, res) => {
         const products = await Product.find({});
         // we pass thru, as a second argumrnt
         // the products that are sent from the DB 
-        res.render('products/index', { products, category: 'All' });
+        res.send(products);
     }
 });
 
@@ -62,14 +62,14 @@ app.post('/products', async (req, res) => {
     const newProduct = new Product(req.body);
     await newProduct.save();
     console.log(newProduct);
-    res.redirect(`/products/${newProduct._id}`);
+    res.send(newProduct);
 });
 
 // rout for showing details about a product
 app.get('/products/:id', async (req, res) => {
     const { id } = req.params;
     const product = await Product.findById(id);
-    res.render('products/show', { product });
+    res.send(product);
 });
 
 // find and updating one product routs
@@ -89,7 +89,7 @@ app.put('/products/:id', async (req, res) => {
 app.delete('/products/:id', async (req, res) => {
     const { id } = req.params;
     const deletedProd = await Product.findByIdAndRemove(id);
-    res.redirect('/products');
+    res.send('product deleted');
 });
 
 
@@ -97,3 +97,5 @@ app.delete('/products/:id', async (req, res) => {
 app.listen(3000, () => {
     console.log('ON PORT 3000!');
 });
+
+// '192.168.0.134',
